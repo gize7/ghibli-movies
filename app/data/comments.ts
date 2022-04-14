@@ -5,15 +5,15 @@ export type CommentEntry = {
 };
 
 export async function getComments(filmId: string) {
-  const response = await fetch(
-    `/comments?filmId=${filmId}`
-  );
+  const url = new URL(window.location.toString());
+  const response = await fetch(`${url?.href}/comments?filmId=${filmId}`);
 
   return response.json();
 }
 
 export async function addComment(comment: CommentEntry) {
-  const response = await fetch("/comments", {
+  const url = new URL(window.location.toString());
+  const response = await fetch(`${url?.href}/comments`, {
     method: "POST",
     body: JSON.stringify(comment),
     headers: {
