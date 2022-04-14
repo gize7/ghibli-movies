@@ -15,7 +15,6 @@ export async function getComments(filmId: string) {
 }
 
 export async function addComment(comment: CommentEntry) {
-  const url = new URL(window.location.toString());
   const response = await fetch(`${url}/comments`, {
     method: "POST",
     body: JSON.stringify(comment),
